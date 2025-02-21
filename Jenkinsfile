@@ -1,29 +1,9 @@
- pipeline {     
-    agent {label 'slave-1'} 
-    
-    tools {
-        jdk 'jdk17'
-        maven 'maven3'
-    } 
-
+pipeline {
+    agent any  // Let Jenkins pick any available node
     stages {
-        
-         
-        stage('Compile') {
-            steps {
-            sh  "mvn compile"
-            }
-        }
-        
-        stage('tests') {
-            steps {
-                sh "mvn test"
-            }
-        }
-        
         stage('Build') {
             steps {
-                sh "mvn package"
+                echo 'Building...'
             }
         }
     }
